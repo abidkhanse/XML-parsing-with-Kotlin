@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<students>
+            
+    
+    <student id="cs-1">
+                        
+        
+        <name>Abid</name>
+                        
+        
+        <phone>00460987654</phone>
+                        
+        
+        <department>CS</department>
+                    
+    
+    </student>
+            
+    
+    <student id="cs-2">
+                        
+        
+        <name>Khan</name>
+                        
+        
+        <phone>00461112222333</phone>
+                        
+        
+        <department>CS</department>
+                    
+    
+    </student>
+            
+    
+    
+
+</students>
