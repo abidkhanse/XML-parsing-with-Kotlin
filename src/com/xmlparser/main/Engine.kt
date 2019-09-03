@@ -1,5 +1,10 @@
+package com.xmlparser.main
 
-fun addStudents(studentXmlParser: StudentXmlParser ){
+import Student
+import StudentXmlParser
+
+
+fun addStudents(studentXmlParser: StudentXmlParser){
 
     val abid = Student("cs-1", "Abid", "00460987654", "CS")
     var success = studentXmlParser.insertNode(abid)
@@ -58,6 +63,6 @@ fun main() {
 
     //removeStudent(studentXmlParser)
 
-    studentXmlParser.printXMLFile()
+    //studentXmlParser.printXMLFile()
 
 }

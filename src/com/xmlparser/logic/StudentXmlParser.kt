@@ -2,7 +2,6 @@ import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 import java.io.File
-import javax.swing.text.AbstractDocument
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.OutputKeys
 import javax.xml.transform.TransformerFactory
@@ -120,7 +119,7 @@ class StudentXmlParser{
 
                 transformer.transform(domSource, streamResult)
 
-                success = true;
+                success = true
 
             } catch (e: Exception){
                 e.printStackTrace()
