@@ -1,1 +1,1 @@
-data class Student(var id: String, var name: String, var phone: String, var department: String)
+data class Student(var id: String, var name: String, var phone: String, var department: String, val courses : ArrayList<String>)

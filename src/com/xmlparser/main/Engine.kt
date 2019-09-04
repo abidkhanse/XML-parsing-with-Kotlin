@@ -6,17 +6,22 @@ import StudentXmlParser
 
 fun addStudents(studentXmlParser: StudentXmlParser){
 
-    val abid = Student("cs-1", "Abid", "00460987654", "CS")
+    val courses = ArrayList<String>()
+    courses.add("Intro to computer science")
+    courses.add("Calculus")
+    courses.add("Physics")
+
+    val abid = Student("cs-1", "Abid", "00460987654", "CS", courses)
     var success = studentXmlParser.insertNode(abid)
 
     println("Record inserted $success")
 
-    val khan = Student("cs-2", "Khan", "00461112222333", "CS")
+    val khan = Student("cs-2", "Khan", "00461112222333", "CS", courses)
     success = studentXmlParser.insertNode(khan)
 
     println("Record inserted $success")
 
-    val peter = Student("cs-3", "Peter", "004667548543", "CS")
+    val peter = Student("cs-3", "Peter", "004667548543", "CS", courses)
     success = studentXmlParser.insertNode(peter)
 
     println("Record inserted $success")
@@ -28,7 +33,12 @@ fun addStudents(studentXmlParser: StudentXmlParser){
 
 fun updateStudent(studentXmlParser: StudentXmlParser ){
 
-    val peter = Student("se-3", "Peter", "004667548543", "SE")
+    val courses = ArrayList<String>()
+    courses.add("Intro to computer science")
+    courses.add("Calculus")
+    courses.add("Intro to programming")
+
+    val peter = Student("se-3", "Peter", "004667548543", "SE", courses)
 
     val success  = studentXmlParser.updateNode("cs-3", peter)
 
@@ -57,11 +67,15 @@ fun main() {
 
     val studentXmlParser = StudentXmlParser(filename)
 
-    addStudents(studentXmlParser)
+    //addStudents(studentXmlParser)
+
+    //studentXmlParser.printXMLFile()
 
     //updateStudent(studentXmlParser)
 
-    //removeStudent(studentXmlParser)
+    //studentXmlParser.printXMLFile()
+
+    // removeStudent(studentXmlParser)
 
     //studentXmlParser.printXMLFile()
 

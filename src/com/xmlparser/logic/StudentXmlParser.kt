@@ -1,6 +1,7 @@
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.Node
+import org.w3c.dom.NodeList
 import java.io.File
 import javax.xml.parsers.DocumentBuilderFactory
 import javax.xml.transform.OutputKeys
@@ -12,13 +13,14 @@ class StudentXmlParser{
 
     companion object {
 
-        var ROOT = "students"
-        var NODE = "student"
+        val ROOT = "students"
+        val NODE = "student"
 
-        var ID = "id"
-        var NAME = "name"
-        var PHONE = "phone"
-        var DEPARTMENT = "department"
+        val ID = "id"
+        val NAME = "name"
+        val PHONE = "phone"
+        val DEPARTMENT = "department"
+        val COURSES = "courses"
     }
 
     var fileName : String
@@ -83,6 +85,8 @@ class StudentXmlParser{
 
         node.appendChild(createChildElement(DEPARTMENT, student.department))
 
+        node.appendChild(createChildElementsList(COURSES, "subject", student.courses))
+
         return node
 
     }
@@ -95,6 +99,26 @@ class StudentXmlParser{
 
         return element
 
+    }
+
+    private fun createChildElementsList(tag: String, heading: String, courses: ArrayList<String>) : Element {
+
+        val element = xmlDocument.createElement(tag)
+
+        var id = 1
+
+        var courseElement : Element
+
+        for (i in 0 until courses.size){
+
+            courseElement = xmlDocument.createElement(heading + "-" + id++)
+
+            courseElement.appendChild(xmlDocument.createTextNode(courses[i]))
+
+            element.appendChild(courseElement)
+        }
+
+        return element
     }
 
     fun saveXMLFile() : Boolean {
@@ -154,6 +178,19 @@ class StudentXmlParser{
 
         println("Student ID = $id Name = $name Phone = $phone department = $department" )
 
+        val nodelist = getElementsListByTag(element, COURSES)
+
+        println("Courses")
+        println("======")
+
+        var element : Node
+        for (i in 0 until nodelist.length){
+
+            element = nodelist.item(i)
+            println(element.textContent)
+
+        }
+
     }
 
 
@@ -161,6 +198,14 @@ class StudentXmlParser{
 
         val element = element.getElementsByTagName(tag).item(0).textContent
         return element
+    }
+
+    private fun getElementsListByTag(element: Element, tag: String) : NodeList{
+
+        val nodeList = element.getElementsByTagName(tag)
+
+        return nodeList
+
     }
 
     fun updateNode(id : String, newObj : Student) : Boolean{
